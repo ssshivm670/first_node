@@ -14,10 +14,14 @@ const readStream = fs.createReadStream('largeText.txt', {
 
 const writeStream = fs.createWriteStream('writeStream.txt');
 
-readStream.on('data',chunk=> { 
-    console.log('######### new chunk #######');
-    console.log(chunk);
+// readStream.on('data',chunk=> { 
+//     console.log('######### new chunk #######');
+//     console.log(chunk);
 
-    writeStream.write('\n ###### new chuck #######');
-    writeStream.write(chunk)
-})
+//     writeStream.write('\n ###### new chuck #######');
+//     writeStream.write(chunk)
+// })
+
+//stream pipe
+
+readStream.pipe(writeStream);

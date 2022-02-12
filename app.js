@@ -47,7 +47,7 @@ app.get('/items/:id',(req,res)=>{
     }} = req;
     Item.findById(id).then(result=>{
         console.log(result);
-        //res.render('item-detail',{item:result});
+        res.render('item-detail',{item:result});
     })
 });
 

@@ -1,6 +1,9 @@
 const express = require('express');
 
 const app = express();
+
+const mongodb = 'mongodb+srv://admin:admin123@firstnode.g36tb.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+
 app.set('view engine', 'ejs');
 app.listen(3000);
 

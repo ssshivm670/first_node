@@ -40,6 +40,17 @@ app.post('/items',(req,res)=>{
         .then(()=>{res.redirect('/get-items')})
 })
 
+app.get('/items/:id',(req,res)=>{
+    console.log(req.params);
+    const { params: {
+        id
+    }} = req;
+    Item.findById(id).then(result=>{
+        console.log(result);
+        //res.render('item-detail',{item:result});
+    })
+});
+
 //Always add in the bottom coz if added before any route then that page will be inaccessible
 app.use((req, res) => {
     res.render('error');

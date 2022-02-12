@@ -9,14 +9,16 @@
             <% if (items.length> 0) { %>
                 <% items.forEach(item => { %>
                     <li class="collection-item">
-                        <div><%= item.name %> $<%= item.price %> 
-                            <a href="#!" class="secondary-content">
-                                <i class="material-icons">delete</i>
-                            </a>
-                            <a href="#!" class="secondary-content">
-                                <i class="material-icons">edit</i>
-                            </a>
-                        </div>
+                        <a href="/items/<%= item._id%>">
+                            <div><%= item.name %> $<%= item.price %> 
+                                <a href="#!" class="secondary-content">
+                                    <i class="material-icons">delete</i>
+                                </a>
+                                <a href="#!" class="secondary-content">
+                                    <i class="material-icons">edit</i>
+                                </a>
+                            </div>
+                        </a>
                     </li> 
                 <% }) %>
                 

@@ -56,6 +56,13 @@ app.delete('/items/:id',(req,res)=>{
     });
 });
 
+app.put('/items/:id',(req,res)=>{
+    const { params: { id }} = req;
+    console.log('ID to be deleted');
+    Item.findByIdAndUpdate(id, req.body).then(result=>{
+        res.json({msg:'Updated successfully'});
+    });
+});
 
 //Always add in the bottom coz if added before any route then that page will be inaccessible
 app.use((req, res) => {

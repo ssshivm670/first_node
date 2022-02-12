@@ -23,21 +23,28 @@
             </ul>
         </div>
     </nav>
- 
+
     <div class="container">
         <ul class="collection with-header">
-            <li class="collection-item">
-                <div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div>
-            </li>
-            <li class="collection-item">
-                <div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div>
-            </li>
-            <li class="collection-item">
-                <div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div>
-            </li>
-            <li class="collection-item">
-                <div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div>
-            </li>
+            <% if (items.length> 0) { %>
+                <% items.forEach(item => { %>
+                    <li class="collection-item">
+                        <div><%= item.name %> $<%= item.price %> 
+                            <a href="#!" class="secondary-content">
+                                <i class="material-icons">delete</i>
+                            </a>
+                            <a href="#!" class="secondary-content">
+                                <i class="material-icons">edit</i>
+                            </a>
+                        </div>
+                    </li> 
+                <% }) %>
+                
+            <%} else { %>
+                <li class="collection-item">
+                    <div>No items founds</div>
+                </li>
+            <%} %>
         </ul>
     </div>
 

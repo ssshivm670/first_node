@@ -34,22 +34,28 @@ app.get('/add-item', (req, res) => {
 
 
 app.post('/items',(req,res)=>{
-    console.log(req.body);
     const item = new Item(req.body);
     item.save()
         .then(()=>{res.redirect('/get-items')})
 })
 
 app.get('/items/:id',(req,res)=>{
-    console.log(req.params);
     const { params: {
         id
     }} = req;
     Item.findById(id).then(result=>{
-        console.log(result);
         res.render('item-detail',{item:result});
     })
 });
+
+app.delete('/items/:id',(req,res)=>{
+    const { params: { id }} = req;
+    console.log('ID to be deleted');
+    Item.findByIdAndDelete(id).then(result=>{
+        res.json({redirect:'/get-items'});
+    });
+});
+
 
 //Always add in the bottom coz if added before any route then that page will be inaccessible
 app.use((req, res) => {

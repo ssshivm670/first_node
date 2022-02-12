@@ -1,8 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const Items = require('./models/items');
+const Item = require('./models/items');
 
 const app = express();
+app.use(express.urlencoded({extended: true}));
 
 const mongodb = 'mongodb+srv://admin:admin123@firstnode.g36tb.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 
@@ -22,7 +23,7 @@ app.get('/', (req, res) => {
 
 // Get all entries from mongodb
 app.get('/get-items', (req, res) => {
-    Items.find()
+    Item.find()
         .then(result => res.render('index', { items: result }))
         .catch((err) => console.log(err));
 });
@@ -31,6 +32,13 @@ app.get('/add-item', (req, res) => {
     res.render('add-item');
 })
 
+
+app.post('/items',(req,res)=>{
+    console.log(req.body);
+    const item = new Item(req.body);
+    item.save()
+        .then(()=>{res.redirect('/get-items')})
+})
 
 //Always add in the bottom coz if added before any route then that page will be inaccessible
 app.use((req, res) => {

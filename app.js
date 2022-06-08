@@ -5,7 +5,7 @@ const Item = require('./models/items');
 const app = express();
 app.use(express.urlencoded({extended: true}));
 
-const mongodb = 'mongodb+srv://admin:admin123@firstnode.g36tb.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+const mongodb = 'mongodb+srv://admin:admin123@firstnode.g36tb.mongodb.net/?retryWrites=true&w=majority'
 
 mongoose.connect(mongodb,
     { useNewUrlParser: true, useUnifiedTopology: true })

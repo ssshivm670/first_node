@@ -13,7 +13,7 @@ const server = http.createServer((req, res) => {
 
     switch (req.url) {
         case '/':
-            route += "index.html";
+            route += "/index.html";
             res.statusCode = 200;
             break;
         case '/contact':

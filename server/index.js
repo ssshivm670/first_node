@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(cors());
 app.use('/todos', todoRoutes );
 
-const mongodb = "mongodb+srv://admin:admin123@firstnode.g36tb.mongodb.net/todos-database?retryWrites=true&w=majority"
+// const mongodb = "mongodb+srv://admin:admin123@firstnode.g36tb.mongodb.net/todos-database?retryWrites=true&w=majority"
 
 app.get('/',(req, res)=>{
     res.send("Welcome")
@@ -18,7 +18,7 @@ app.get('/',(req, res)=>{
 
 const PORT = process.env.PORT || 5000;
 
-mongoose.connect(mongodb)
+mongoose.connect(process.env.mongodb)
     .then(()=>{
         app.listen(PORT);
         console.log(`server is running on port ${PORT}`);

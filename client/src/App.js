@@ -11,6 +11,7 @@ function App() {
   useEffect(() => {
     let currentTodo = currentId !== 0 ? todos.find(todo => todo._id === currentId) : { title: '', content: '' }
     setTodo(currentTodo)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentId])
   useEffect(() => {
     const fetchData = async () => {

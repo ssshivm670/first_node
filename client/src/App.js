@@ -45,10 +45,10 @@ function App() {
   }
   const removeTodo = async (e, id) => {
     e.preventDefault();
+    e.stopPropagation();
     await deleteTodo(id);
-    const todosCopy = [...todos];
-    todosCopy.filter(todo => todo._id !== id);
-    setTodos(todosCopy);
+    const todosCopy = await readTodos();
+    setTodos(todosCopy)
     clear();
   }
   return (
